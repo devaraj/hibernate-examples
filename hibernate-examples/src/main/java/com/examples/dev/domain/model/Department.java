@@ -14,8 +14,10 @@ public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer departmentId;
-
-	@OneToMany
+	
+	private String deptName;
+	
+	@OneToMany(mappedBy="department")
 	private List<Employee> employees;
 
 	public List<Employee> getEmployees() {
@@ -32,6 +34,14 @@ public class Department {
 
 	public void setDepartmentId(Integer departmentId) {
 		this.departmentId = departmentId;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
  
 

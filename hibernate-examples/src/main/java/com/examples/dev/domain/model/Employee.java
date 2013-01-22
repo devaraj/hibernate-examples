@@ -1,9 +1,12 @@
 package com.examples.dev.domain.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -15,6 +18,10 @@ public class Employee {
 	private String empName;
 
 	private String empAddress;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="departmentId")
+	private Department department;
 
 	public Integer getEmpId() {
 		return empId;
@@ -38,6 +45,14 @@ public class Employee {
 
 	public void setEmpAddress(String empAddress) {
 		this.empAddress = empAddress;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 }
